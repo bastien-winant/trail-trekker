@@ -1,9 +1,13 @@
 import duckdb
+import yaml
 
-with duckdb.connect("./trail_trekker.db") as con:
-	con.sql("CREATE OR REPLACE SCHEMA raw;")
-	con.sql("CREATE OR REPLACE TABLE raw.subscriptions AS SELECT * FROM './data/subscriptions.csv'")
-	con.sql("CREATE OR REPLACE TABLE raw.plan_features AS SELECT * FROM './data/plan_features.csv'")
-	con.sql("CREATE OR REPLACE TABLE raw.customers AS SELECT * FROM './data/customers.csv'")
-	con.sql("CREATE OR REPLACE TABLE raw.features AS SELECT * FROM './data/features.csv'")
-	con.sql("CREATE OR REPLACE TABLE raw.plans AS SELECT * FROM './data/plans.csv'")
+with open("index.yml", "r") as f:
+	data = yaml.safe_load(f)
+
+data_files = data['data_files']
+
+with duckdb.connect("trail_trekker.db") as con:
+	con.sql("CREATE SCHEMA IF NOT EXISTS raw;")
+
+	for table_name, file_path in data_files.items():
+		con.sql(f"CREATE TABLE raw.{table_name} AS SELECT * FROM '{file_path}';")

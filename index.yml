@@ -1,0 +1,6 @@
+data_files:
+  customers: 'data/customers.csv'
+  features: 'data/features.csv'
+  plan_features: 'data/plan_features.csv'
+  plans: 'data/plans.csv'
+  subscriptions: 'data/subscriptions.csv'
