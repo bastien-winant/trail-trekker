@@ -1,6 +1,6 @@
 data_files:
-  customers: 'data/customers.csv'
-  features: 'data/features.csv'
-  plan_features: 'data/plan_features.csv'
-  plans: 'data/plans.csv'
-  subscriptions: 'data/subscriptions.csv'
+  customers: 'seeds/customers.csv'
+  features: 'seeds/features.csv'
+  plan_features: 'seeds/plan_features.csv'
+  plans: 'seeds/plans.csv'
+  subscriptions: 'seeds/subscriptions.csv'
