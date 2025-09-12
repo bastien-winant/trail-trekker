@@ -1,7 +1,7 @@
 MODEL (
 	name raw.customers,
 	kind SEED (
-		path: '$/seeds/customers.csv'
+		path '$root/seeds/customers.csv'
 	),
 	start '2022-08-20',
 	columns (

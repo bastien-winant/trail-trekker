@@ -1,7 +1,7 @@
 MODEL (
 	name raw.features,
 	kind SEED (
-		path: '$/seeds/features.csv'
+		path '$root/seeds/features.csv'
 	),
 	columns (
 		feature_id VARCHAR(10),

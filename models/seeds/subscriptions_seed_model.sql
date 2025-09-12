@@ -1,7 +1,7 @@
 MODEL (
       name raw.subscriptions,
       kind SEED (
-      	path: '$/seeds/subscriptions.csv'
+      	path '$root/seeds/subscriptions.csv'
       ),
       columns (
       	subscription_id VARCHAR(10),
