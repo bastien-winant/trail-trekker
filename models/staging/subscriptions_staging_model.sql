@@ -13,4 +13,4 @@ SELECT
 	status AS subscription_status,
 	next_billing_date AS next_billing_at,
 	payment_method
-FROM raw_subscriptions;
+FROM raw.subscriptions;
