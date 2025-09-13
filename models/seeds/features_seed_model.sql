@@ -7,7 +7,7 @@ MODEL (
 		feature_id VARCHAR(10),
 		feature_name VARCHAR(50),
 		feature_description TEXT,
-		feature_category VARCHAR(50)
+		feature_category VARCHAR(10)
 	),
 	grain (feature_id)
-)
+);
