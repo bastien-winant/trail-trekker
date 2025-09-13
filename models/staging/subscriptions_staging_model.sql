@@ -1,6 +1,9 @@
 MODEL (
 	name staging.subscriptions,
-	kind VIEW
+	kind VIEW,
+  audits (
+    not_null(columns := (subscription_id))
+  )
 );
 
 SELECT

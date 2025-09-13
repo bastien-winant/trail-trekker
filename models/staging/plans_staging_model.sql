@@ -1,6 +1,9 @@
 MODEL (
 	name staging.plans,
-	kind VIEW
+	kind VIEW,
+  audits (
+    not_null(columns := (plan_id))
+  )
 );
 
 WITH monthly_plan AS (
