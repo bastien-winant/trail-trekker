@@ -11,4 +11,4 @@ SELECT
 	feature_name,
 	feature_description,
 	feature_category
-FROM raw.features
+FROM raw.features;
