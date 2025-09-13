@@ -1,6 +1,6 @@
 MODEL (
-      name staging.plans,
-      kind VIEW
+	name staging.plans,
+	kind VIEW
 );
 
 WITH monthly_plan AS (
