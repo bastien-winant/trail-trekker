@@ -1,5 +1,5 @@
 MODEL (
-	name raw.plan_features,
+	name stg.plan_features,
 	kind SEED (
 		path '$root/seeds/plan_features.csv'
 	),

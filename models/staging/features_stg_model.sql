@@ -1,5 +1,5 @@
 MODEL (
-	name raw.features,
+	name stg.features,
 	kind SEED (
 		path '$root/seeds/features.csv'
 	),

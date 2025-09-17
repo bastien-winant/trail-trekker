@@ -1,5 +1,5 @@
 MODEL (
-	name raw.subscriptions,
+	name stg.subscriptions,
 	kind SEED (
 		path '$root/seeds/subscriptions.csv'
 	),

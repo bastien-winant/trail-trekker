@@ -1,5 +1,5 @@
 MODEL (
-	name staging.plans,
+	name core.plans,
 	kind VIEW,
   audits (
     not_null(columns := (plan_id))
@@ -10,14 +10,14 @@ WITH monthly_plan AS (
 	SELECT
 		*,
 		SUBSTRING(plan_id, 1, LEN(plan_id) - 1) AS id
-	FROM raw.plans
+	FROM stg.plans
 	WHERE plan_id LIKE '%M'
 ),
 annual_plan AS (
 	SELECT
 		*,
 		SUBSTRING(plan_id, 1, LEN(plan_id) - 1) AS id
-	FROM raw.plans
+	FROM stg.plans
 	WHERE plan_id LIKE '%A'
 )
 SELECT

@@ -1,5 +1,5 @@
 MODEL (
-	name staging.customers,
+	name core.customers,
 	kind VIEW,
   audits (
     not_null(columns := (customer_id))
@@ -21,4 +21,4 @@ SELECT
 	profile_created_date,
 	total_hikes_logged,
 	favorite_trail_type
-FROM raw.customers;
+FROM stg.customers;

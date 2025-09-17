@@ -1,7 +1,7 @@
-test_staging_plans_model:
-  model: staging.plans
+test_core_plans_model:
+  model: core.plans
   inputs:
-    raw.plans:
+    stg.plans:
       rows:
         - plan_id: "PLN003M"
           plan_name: "Trail Master"

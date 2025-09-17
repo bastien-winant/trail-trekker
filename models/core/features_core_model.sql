@@ -1,5 +1,5 @@
 MODEL (
-  name staging.features,
+  name core.features,
   kind VIEW,
   audits (
     not_null(columns := (feature_id))
@@ -11,4 +11,4 @@ SELECT
 	feature_name,
 	feature_description,
 	feature_category
-FROM raw.features;
+FROM stg.features;

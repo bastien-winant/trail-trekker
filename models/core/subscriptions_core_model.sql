@@ -1,5 +1,5 @@
 MODEL (
-	name staging.subscriptions,
+	name core.subscriptions,
 	kind VIEW,
   audits (
     not_null(columns := (subscription_id))
@@ -16,4 +16,4 @@ SELECT
 	status AS subscription_status,
 	next_billing_date AS next_billing_at,
 	payment_method
-FROM raw.subscriptions;
+FROM stg.subscriptions;
