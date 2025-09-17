@@ -2,12 +2,12 @@ MODEL (
 	name core.subscriptions,
 	kind VIEW,
   audits (
-    not_null(columns := (subscription_id))
+    not_null(columns := (id, customer_id, plan_id))
   )
 );
 
 SELECT
-	subscription_id,
+	subscription_id AS id,
 	customer_id,
 	plan_id,
 	billing_cycle AS billing_cadence,

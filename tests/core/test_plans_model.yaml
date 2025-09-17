@@ -51,20 +51,20 @@ test_core_plans_model:
   outputs:
     query:
       rows:
-        - plan_id: "PLN003"
-          plan_name: "Trail Master"
-          plan_level: 3
+        - id: "PLN003"
+          name: "Trail Master"
+          level: 3
+          description: "This is a plan description"
           monthly_price_usd_cents: 399
           yearly_price_usd_cents: 3999
           max_hikes_per_month: 100
           photo_storage_gb: 50
-          description: "This is a plan description"
 
-        - plan_id: "PLN004"
-          plan_name: "Adventurer"
-          plan_level: 2
+        - id: "PLN004"
+          name: "Adventurer"
+          level: 2
+          description: "This is a plan description"
           monthly_price_usd_cents: 299
           yearly_price_usd_cents: 2999
           max_hikes_per_month: 50
           photo_storage_gb: 80
-          description: "This is a plan description"

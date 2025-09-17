@@ -2,7 +2,7 @@ MODEL (
 	name core.plans,
 	kind VIEW,
   audits (
-    not_null(columns := (plan_id))
+    not_null(columns := (id, name))
   )
 );
 
@@ -21,14 +21,14 @@ annual_plan AS (
 	WHERE plan_id LIKE '%A'
 )
 SELECT
-	m.id as plan_id,
-	m.plan_name,
-	m.plan_level,
+	m.id,
+	m.plan_name AS name,
+	m.plan_level AS level,
+	m.description,
 	CAST(m.price*100 AS INTEGER) AS monthly_price_usd_cents,
-	CAST(a.price*100 AS INTEGER) yearly_price_usd_cents,
+	CAST(a.price*100 AS INTEGER) AS yearly_price_usd_cents,
 	m.max_hikes_per_month,
-	m.photo_storage_gb,
-	m.description
+	m.photo_storage_gb
 FROM monthly_plan m
 JOIN annual_plan a
 ON m.id = a.id;

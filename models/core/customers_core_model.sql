@@ -2,12 +2,12 @@ MODEL (
 	name core.customers,
 	kind VIEW,
   audits (
-    not_null(columns := (customer_id))
+    not_null(columns := (id, username))
   )
 );
 
 SELECT
-	customer_id,
+	customer_id AS id,
 	username,
 	email,
 	phone,
