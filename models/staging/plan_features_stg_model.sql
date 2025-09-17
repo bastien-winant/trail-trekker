@@ -1,13 +1,15 @@
 MODEL (
 	name stg.plan_features,
-	kind SEED (
-		path '$root/seeds/plan_features.csv'
-	),
-	columns (
-		plan_feature_id VARCHAR(10),
-		plan_id VARCHAR(10),
-		feature_id VARCHAR(10),
-		included BOOLEAN
-  ),
-  grain (plan_feature_id)
+	kind VIEW,
+	grain id,
+	audits (
+		NOT_NULL(columns := (id, plan_id, feature_id))
+	)
 );
+
+SELECT
+	plan_feature_id AS id,
+	plan_id,
+	feature_id,
+	included
+FROM raw.plan_features;

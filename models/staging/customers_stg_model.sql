@@ -1,23 +1,26 @@
 MODEL (
 	name stg.customers,
-	kind SEED (
-  	path '$root/seeds/customers.csv'
-	),
-	columns (
-		customer_id VARCHAR(10),
-		username VARCHAR(50),
-		email VARCHAR(255),
-		phone VARCHAR(15),
-		first_name VARCHAR(100),
-		last_name VARCHAR(100),
-		date_of_birth DATE,
-		preferred_difficulty VARCHAR(10),
-		location_city VARCHAR(100),
-		location_state CHAR(2),
-		location_country VARCHAR(100),
-		profile_created_date DATE,
-		total_hikes_logged INTEGER,
-		favorite_trail_type VARCHAR(20)
-	),
-	grain (customer_id)
+	kind VIEW,
+  grain id,
+  audits (
+    NOT_NULL(columns := (id, username)),
+    UNIQUE_VALUES(columns = (username))
+  )
 );
+
+SELECT
+	customer_id AS id,
+	username,
+	email,
+	phone,
+	first_name,
+	last_name,
+	date_of_birth,
+	preferred_difficulty,
+	location_city,
+	location_state,
+	location_country,
+	profile_created_date,
+	total_hikes_logged,
+	favorite_trail_type
+FROM raw.customers;

@@ -1,13 +1,16 @@
 MODEL (
-	name stg.features,
-	kind SEED (
-		path '$root/seeds/features.csv'
-	),
-	columns (
-		feature_id VARCHAR(10),
-		feature_name VARCHAR(50),
-		feature_description TEXT,
-		feature_category VARCHAR(10)
-	),
-	grain (feature_id)
+  name stg.features,
+  kind VIEW,
+  grain id,
+  audits (
+    NOT_NULL(columns := (id, name)),
+    UNIQUE_VALUES(columns = (name))
+  )
 );
+
+SELECT
+	feature_id AS id,
+	feature_name AS name,
+	feature_description AS description,
+	feature_category AS category
+FROM raw.features;
