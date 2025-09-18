@@ -1,10 +1,9 @@
 MODEL (
-	name stg.customers,
-	kind VIEW,
-  grain id,
+  name stg.customers,
+  kind VIEW,
   audits (
-    NOT_NULL(columns := (id, username)),
-    UNIQUE_VALUES(columns = (username))
+    not_null(columns := (id, username)),
+    unique_values(columns := (id, username))
   )
 );
 

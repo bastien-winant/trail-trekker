@@ -1,11 +1,11 @@
 MODEL (
   name stg.features,
   kind VIEW,
-  grain id,
   audits (
-    NOT_NULL(columns := (id, name)),
-    UNIQUE_VALUES(columns = (name))
-  )
+    not_null(columns := id),
+    unique_values(columns := (id, name))
+  ),
+  description 'Details for each plan feature'
 );
 
 SELECT
