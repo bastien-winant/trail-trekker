@@ -1,9 +1,9 @@
 MODEL (
   name stg.subscriptions,
   kind VIEW,
-  grain id,
+  grain (customer_id, start_date),
   audits (
-    not_null(columns := (id, customer_id, plan_id))
+    not_null(columns := (id, customer_id, plan_id, start_date))
   ),
   description 'Subscription details for a customer'
 );
