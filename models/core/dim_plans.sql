@@ -1,6 +1,6 @@
 MODEL (
   name core.dim_plans,
-  kind VIEW,
+  kind FULL,
   grain id,
   audits (
     not_null(columns := id),

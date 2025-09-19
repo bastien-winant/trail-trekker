@@ -1,6 +1,6 @@
 MODEL (
   name core.fct_subscription_changes,
-	kind VIEW,
+	kind FULL,
 	grain (subscription_id, change_date),
 	audits (
 		not_null(columns := (subscription_id, customer_id, change_type, change_date))
