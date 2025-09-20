@@ -1,9 +1,7 @@
 MODEL (
   name core.fct_subscription_changes,
-	kind INCREMENTAL_BY_TIME_RANGE (
-    time_column (change_date, '%Y-%m-%d')
-  ),
-	start '2020-01-01',
+	kind FULL,
+  cron '@daily',
 	grain (subscription_id, change_date),
 	audits (
 		not_null(columns := (subscription_id, customer_id, change_type, change_date))
@@ -22,7 +20,6 @@ WITH lagged_subscriptions AS (
 		LEAD(plan_id) OVER (PARTITION BY customer_id ORDER BY start_date) AS next_plan_id,
 		LEAD(start_date) OVER (PARTITION BY customer_id ORDER BY start_date) AS next_plan_start_date
 	FROM stg.subscriptions
-	WHERE start_date BETWEEN @start_ds AND @end_ds
 ),
 subscription_changes AS (
 	SELECT
