@@ -12,6 +12,5 @@ SELECT
 	id,
 	name,
 	level,
-	price_usd_cents,
-	launch_date
+	price_usd_cents
 FROM stg.plans
