@@ -1,15 +1,18 @@
 MODEL (
   name stg.subscriptions,
-  kind VIEW,
-  grain (customer_id, start_date),
-  audits (
-    not_null(columns := (id, customer_id, plan_id, start_date))
+  kind INCREMENTAL_BY_TIME_RANGE (
+    time_column start_date
   ),
-  description 'Subscription details for a customer'
+  start '2022-01-01',
+  cron '@daily',
+  grain (id, start_date),
+  audits (
+    not_null(columns := (id, customer_id, plan_id))
+  )
 );
 
 SELECT
-	subscription_id AS id,
+  subscription_id AS id,
 	customer_id,
 	plan_id,
 	billing_cycle AS billing_cadence,
@@ -18,4 +21,7 @@ SELECT
 	status,
 	next_billing_date,
 	payment_method
-FROM raw.subscriptions
+FROM
+  raw.subscriptions
+WHERE
+  subscription_start_date between @start_date and @end_date;

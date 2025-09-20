@@ -27,7 +27,7 @@ default_gateway: duckdb
 
 model_defaults:
   dialect: duckdb
-  start: 2025-09-17 # Start date for backfill history
+  start: 2025-09-19 # Start date for backfill history
   cron: '@daily'    # Run models daily at 12am UTC (can override per model)
 
 # --- Linting Rules ---

@@ -13,7 +13,7 @@ MODEL (
 		date_of_birth DATE,
 		preferred_difficulty VARCHAR(10),
 		location_city VARCHAR(100),
-		location_state VARCHAR(2),
+		location_state CHAR(2),
 		location_country VARCHAR(100),
 		profile_created_date DATE,
 		total_hikes_logged INTEGER,

@@ -1,22 +1,27 @@
 MODEL (
   name stg.plans,
-  kind VIEW,
+  kind INCREMENTAL_BY_TIME_RANGE (
+    time_column launch_date
+  ),
+  start '2021-01-01',
+  cron '@daily',
   grain id,
   audits (
-    not_null(columns := id),
+    not_null(columns := (id, name, launch_date)),
     unique_values(columns := id)
-  ),
-  description 'Perks and pricing details for each plan'
+  )
 );
 
 SELECT
-	plan_id AS id,
+  plan_id AS id,
 	plan_name AS name,
 	plan_level AS level,
-	CAST(price*100 AS INTEGER) AS price_usd_cents,
+	CAST(100*price AS INTEGER) AS price_cents,
 	max_hikes_per_month,
 	photo_storage_gb,
 	description,
 	created_at AS launch_date
-FROM raw.plans
-WHERE plan_id LIKE '%M' OR plan_id LIKE '%A'
+FROM
+  raw.plans
+WHERE
+  created_at between @start_date and @end_date;
